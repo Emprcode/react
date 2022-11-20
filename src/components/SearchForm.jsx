@@ -3,9 +3,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { fetchData } from "../utilities/axiosHelper";
+import { MovieCard } from "./MovieCard";
 
 export const SearchForm = () => {
   const [form, setForm] = useState("");
+  const [movie, setMovie] = useState({});
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -14,7 +17,8 @@ export const SearchForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    const resp = fetchData(form);
+    setMovie(resp.data);
   };
 
   return (
@@ -31,6 +35,7 @@ export const SearchForm = () => {
           </Col>
         </Row>
       </Form>
+      <MovieCard movie={movie} />
     </div>
   );
 };

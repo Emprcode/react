@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <h2 className="d-flex justify-content-center mt-5">Movie List</h2>
       <SearchForm />
-      <MovieCard />
     </div>
   );
 }

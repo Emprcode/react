@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-export const MovieCard = () => {
+export const MovieCard = ({ movie }) => {
   return (
     <div>
       <Card
