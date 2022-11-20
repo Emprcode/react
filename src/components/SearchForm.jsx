@@ -15,27 +15,40 @@ export const SearchForm = () => {
     setForm(value);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const resp = fetchData(form);
-    setMovie(resp.data);
+
+    try {
+      const resp = await fetchData(form);
+      console.log(resp.data);
+      setMovie(resp.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div className="d-flex justify-content-center p-5">
-      <Form onSubmit={handleOnSubmit}>
-        <Row>
-          <Col>
-            <Form.Control onChange={handleOnChange} placeholder="Movie Name" />
-          </Col>
-          <Col>
-            <Button type="submit" variant="primary">
-              Search
-            </Button>{" "}
-          </Col>
-        </Row>
-      </Form>
-      <MovieCard movie={movie} />
-    </div>
+    <>
+      <div className="d-flex justify-content-center p-5">
+        <Form onSubmit={handleOnSubmit}>
+          <Row>
+            <Col>
+              <Form.Control
+                onChange={handleOnChange}
+                placeholder="Movie Name"
+              />
+            </Col>
+            <Col>
+              <Button type="submit" variant="primary">
+                Search
+              </Button>{" "}
+            </Col>
+          </Row>
+        </Form>
+      </div>
+      <div className="d-flex justify-content-center p-5">
+        <MovieCard movie={movie} />
+      </div>
+    </>
   );
 };
