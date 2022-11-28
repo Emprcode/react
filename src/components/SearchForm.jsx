@@ -5,11 +5,11 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { fetchData } from "../utilities/axiosHelper";
 import { MovieCard } from "./MovieCard";
+import { Alert } from "bootstrap";
 
 export const SearchForm = () => {
   const [form, setForm] = useState("");
   const [movie, setMovie] = useState({});
-  const [error, setError] = useState("");
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -18,15 +18,6 @@ export const SearchForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const resp = await fetchData(form);
-      console.log(resp.data);
-      setMovie(resp.data);
-    } catch (error) {
-      console.log(error);
-      setError("Error");
-    }
   };
 
   return (
@@ -46,10 +37,10 @@ export const SearchForm = () => {
               </Button>{" "}
             </Col>
           </Row>
+          <Row className="d-flex justify-content-center p-5">
+            <MovieCard movie={movie} />
+          </Row>
         </Form>
-      </div>
-      <div className="d-flex justify-content-center p-5">
-        <MovieCard movie={movie} />
       </div>
     </>
   );
