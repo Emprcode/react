@@ -9,6 +9,7 @@ import { MovieCard } from "./MovieCard";
 export const SearchForm = () => {
   const [form, setForm] = useState("");
   const [movie, setMovie] = useState({});
+  const [error, setError] = useState("");
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -24,6 +25,7 @@ export const SearchForm = () => {
       setMovie(resp.data);
     } catch (error) {
       console.log(error);
+      setError("Error");
     }
   };
 
