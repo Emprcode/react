@@ -10,6 +10,7 @@ import { Alert } from "bootstrap";
 export const SearchForm = () => {
   const [form, setForm] = useState("");
   const [movie, setMovie] = useState({});
+  const [error, setError] = useState("");
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -18,6 +19,18 @@ export const SearchForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const resp = await fetchData(form);
+      console.log(resp.data);
+
+      if (resp.data.Response === "True") {
+        setMovie(resp.data);
+      } else {
+        setError(resp.data.Error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,6 +52,7 @@ export const SearchForm = () => {
           </Row>
           <Row className="d-flex justify-content-center p-5">
             <MovieCard movie={movie} />
+            {error && <Alert variant="danger">{error}</Alert>}
           </Row>
         </Form>
       </div>
