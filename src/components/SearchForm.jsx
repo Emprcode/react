@@ -26,6 +26,7 @@ export const SearchForm = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <div className="d-flex justify-content-center p-5">
@@ -44,7 +45,7 @@ export const SearchForm = () => {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center p-5">
-            <MovieCard />
+            <MovieCard movie={movie} />
           </Row>
         </Form>
       </div>
