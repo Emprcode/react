@@ -5,32 +5,8 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { fetchData } from "../utilities/axiosHelper";
 import { MovieCard } from "./MovieCard";
-import { Alert } from "bootstrap";
 
 export const SearchForm = () => {
-  const [form, setForm] = useState("");
-  const [movie, setMovie] = useState({});
-
-  const handleOnChange = (e) => {
-    const { value } = e.target;
-    setForm(value);
-  };
-
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const resp = await fetchData(form);
-      console.log(resp.data);
-
-      if (resp.data.Response === "True") {
-        setMovie(resp.data);
-      } else {
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       <div className="d-flex justify-content-center p-5">
