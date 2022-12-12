@@ -7,7 +7,8 @@ import { fetchData } from "../utilities/axiosHelper";
 import { MovieCard } from "./MovieCard";
 
 export const SearchForm = () => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState("");
+  const [movie, setMovie] = useState({});
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -15,10 +16,15 @@ export const SearchForm = () => {
     console.log(value);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const resp = fetchData(form);
-    console.log(resp);
+    try {
+      const resp = await fetchData(form);
+      console.log(resp.data);
+      setMovie(resp.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
