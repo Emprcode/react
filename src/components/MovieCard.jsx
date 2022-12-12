@@ -7,11 +7,11 @@ export const MovieCard = () => {
   // const { Poster, Title, Genre, Plot } = movie;
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={Poster} />
+      {/* <Card.Img variant="top" src={Poster} /> */}
       <Card.Body>
-        <Card.Title>{Title}</Card.Title>
+        {/* <Card.Title>{Title}</Card.Title>
         <Card.Text>{Genre}</Card.Text>
-        <Card.Text>{Plot}</Card.Text>
+        <Card.Text>{Plot}</Card.Text> */}
         <Button variant="primary">Happy</Button>
       </Card.Body>
     </Card>

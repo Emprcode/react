@@ -7,6 +7,19 @@ import { fetchData } from "../utilities/axiosHelper";
 import { MovieCard } from "./MovieCard";
 
 export const SearchForm = () => {
+  const [form, setForm] = useState({});
+
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+    setForm(value);
+    console.log(value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const resp = fetchData(form);
+    console.log(resp);
+  };
   return (
     <>
       <div className="d-flex justify-content-center p-5">
@@ -14,8 +27,8 @@ export const SearchForm = () => {
           <Row>
             <Col>
               <Form.Control
-                onChange={handleOnChange}
                 placeholder="Movie Name"
+                onChange={handleOnChange}
               />
             </Col>
             <Col>
@@ -25,7 +38,7 @@ export const SearchForm = () => {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center p-5">
-            <MovieCard movie={movie} />
+            <MovieCard />
           </Row>
         </Form>
       </div>
