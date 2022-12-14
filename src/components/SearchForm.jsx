@@ -41,7 +41,7 @@ export const SearchForm = () => {
             <Col>
               <Button type="submit" variant="primary">
                 Search
-              </Button>{" "}
+              </Button>
             </Col>
           </Row>
           <Row className="d-flex justify-content-center p-5">
