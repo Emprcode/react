@@ -12,7 +12,10 @@ export const MovieCard = ({ movie }) => {
         <Card.Title>{Title}</Card.Title>
         <Card.Text>{Genre}</Card.Text>
         <Card.Text>{Plot}</Card.Text>
-        <Button variant="primary">Happy</Button>
+        <div className="d-flex justify-content-between">
+          <Button variant="danger">Happy</Button>
+          <Button variant="success">Lazy</Button>
+        </div>
       </Card.Body>
     </Card>
   );
